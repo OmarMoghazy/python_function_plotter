@@ -58,10 +58,8 @@ class Window(QDialog):
 
     # this function is called whenever the button is clicked
     def plot(self):
-        self.fx.setText("<h2> f (x) = " + self.f.text() + " </h2>")
         # get data from textboxes and send to compute.py
         if not validate.validate_func(self.f.text()):
-            print('bad func\n')
             validate.make_message("Invalid function", "Only numbers (0-9), operators (+, -, *, /) "
                                                       "and the variable X are allowed")
         elif not validate.validate_x(self.xmin.text()):
@@ -69,6 +67,7 @@ class Window(QDialog):
         elif not validate.validate_x(self.xmax.text()):
             validate.make_message("Error", "Please Enter a valid value for upper limit")
         else:
+            self.fx.setText("<h2> f (x) = " + self.f.text() + " </h2>")
             x, func = compute.comp(self.f.text(), int(self.xmin.text()), int(self.xmax.text()))
             # clear old figure
             self.figure.clear()

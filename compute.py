@@ -27,12 +27,13 @@ def comp(func, xmin, xmax):
         # turn math expression to code
         y = eval(func)
     # else if expression is a numeric constant
-    elif is_number(func):
-        y = np.array([float(func) for i in range(len(x))])
-    # if the expression evaluates to a numeric constant
     else:
-        temp = eval(func)
-        y = np.array([float(temp) for i in range(len(x))])
+        if is_number(func):
+            y = np.array([float(func) for i in range(len(x))])
+        # if the expression evaluates to a numeric constant
+        else:
+            temp = eval(func)
+            y = np.array([float(temp) for i in range(len(x))])
 
 
     # return axes to be plotted

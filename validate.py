@@ -6,7 +6,7 @@ def validate_func(string):
     # accept only numbers, x, brackets () or the mathematical operators +, -, *, /
 
     regex = "(?:[0-9-+ * / ^ () x X])+"
-    return bool(re.match(regex, string))
+    return bool(re.findall(regex, string))
 
 
 def validate_x(string):
